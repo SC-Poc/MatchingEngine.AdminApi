@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Client;
 using AutoMapper;
+using MatchingEngine.AdminApi.Extensions;
 using MatchingEngine.AdminApi.Models;
 using MatchingEngine.AdminApi.Models.AssetPairs;
 using Microsoft.AspNetCore.Mvc;

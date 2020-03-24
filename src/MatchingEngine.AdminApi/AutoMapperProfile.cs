@@ -1,8 +1,7 @@
-using AutoMapper;
+﻿using AutoMapper;
 using MatchingEngine.AdminApi.Models;
 using MatchingEngine.AdminApi.Models.AssetPairs;
 using MatchingEngine.AdminApi.Models.Assets;
-using MatchingEngine.AdminApi.Models.Candles;
 using MatchingEngine.AdminApi.Models.OrderBooks;
 using MatchingEngine.AdminApi.Models.Wallets;
 
