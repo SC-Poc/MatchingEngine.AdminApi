@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
@@ -52,13 +52,19 @@ namespace MatchingEngine.AdminApi.Controllers
             var key = Encoding.ASCII.GetBytes(_configuration.AdminApi.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] {new Claim(ClaimTypes.Name, user.Id.ToString())}),
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Aud, "exchange.swisschain.io"),
+                    new Claim(JwtRegisteredClaimNames.Aud, "sirius.swisschain.io")
+                }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
+            
 
             var response = new SignInResultModel {Token = tokenHandler.WriteToken(token)};
 
