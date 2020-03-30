@@ -56,7 +56,8 @@ namespace MatchingEngine.AdminApi.Controllers
                 {
                     new Claim(ClaimTypes.Name, user.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Aud, "exchange.swisschain.io"),
-                    new Claim(JwtRegisteredClaimNames.Aud, "sirius.swisschain.io")
+                    new Claim(JwtRegisteredClaimNames.Aud, "sirius.swisschain.io"),
+                    new Claim("tenant-id", user.Id.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
